@@ -3,9 +3,20 @@ import dotenv from 'dotenv';
 import connectDB from './config/db';
 import { notFound, errorHandler } from './middlewares/ErrorMiddleware';
 import UserRoutes from './routes/UserRoutes';
+import cors from 'cors';
 
 
 const app: Application = express();
+
+const allowedOrigins = ['http://localhost:3000'];
+
+const options = {
+  origin: allowedOrigins
+};
+
+// Then pass these options to cors:
+app.use(cors(options));
+
 
 dotenv.config();
 
